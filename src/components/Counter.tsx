@@ -1,24 +1,32 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
+import SettingsDisplay from "./SettingDisplay";
+import CounterDisplay from "./CounterDisplay";
 
 
-function Counter() {
+export type ErrorType = 'incorrect value' | 'enter values and press "SET"' | null
 
-    let [count,setCount] = useState(0)
-    const onClickPlus = () => {
-        setCount(count + 1)
-    };
-     const onClickReset = () => {
-         setCount(0)
-     }
+const Counter = () => {
+
+    const [maxValue, setMaxValue] = useState<number>(Number(localStorage.getItem('maxValue')))
+    const [startValue, setStartValue] = useState<number>(Number(localStorage.getItem('startValue')))
+    const [value, setValue] = useState<number>(0)
+
+    const setToLocalStorage = () =>{
+        localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('startValue', JSON.stringify(startValue));
+        setError(null)
+        setValue(startValue)
+    }
+
+    const [error, setError] = useState<'incorrect value' | 'enter values and press "SET"' | null>('enter values and press "SET"')
 
 
     return (
-        <div className={"Counter"}>
-            <h1>{count}</h1>
-            <button className={"inc"} onClick={()=>{onClickPlus()}}>inc</button>
-            <button className={"reset"} onClick={()=>{onClickReset()}}>reset</button>
-        </div>
-    )
-}
+        <>
+            <SettingsDisplay  error={error} maxValue={maxValue} callBack={setMaxValue} startValue={startValue} setStartValue={setStartValue} setError={setError} set={setToLocalStorage}/>
+            <CounterDisplay maxValue={maxValue} value={value} setError={setError} error={error} setValue={setValue} startValue={startValue}/>
+        </>
+    );
+};
 
 export default Counter;
