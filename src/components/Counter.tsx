@@ -3,6 +3,7 @@ import SettingsDisplay from "./SettingDisplay";
 import CounterDisplay from "./CounterDisplay";
 
 
+
 export type ErrorType = 'incorrect value' | 'enter values and press "SET"' | null
 
 const Counter = () => {
