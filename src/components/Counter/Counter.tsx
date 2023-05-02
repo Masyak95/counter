@@ -1,9 +1,12 @@
 import React, {useState} from "react";
-import {Button} from "./Button";
+import {Button} from "../Button/Button";
+import s from "./Counter.module.css"
 
 type CounterProps = {
     maxValue: number;
     startValue: number;
+    // disabled?: boolean
+    // error: string
 }
 
 const Counter = ({ maxValue, startValue }: CounterProps) => {
@@ -26,7 +29,7 @@ const Counter = ({ maxValue, startValue }: CounterProps) => {
     };
 
     return (
-        <div>
+        <div className={s.window}>
             <p>{count}</p>
             <Button
                 title={"Increment"}
