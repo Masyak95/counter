@@ -6,7 +6,6 @@ import s from "./App.module.css"
 const App = () => {
     const [maxValue, setMaxValue] = useState<number>(10);
     const [startValue, setStartValue] = useState<number>(0);
-    // let [error, setError] = useState<string>('work')
     const handleMaxValueChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setMaxValue(Number(event.target.value));
     };
@@ -20,15 +19,12 @@ const App = () => {
             <Counter
                 maxValue={maxValue}
                 startValue={startValue}
-                // error={error}
             />
             <Settings
                 maxValue={maxValue}
                 startValue={startValue}
                 onMaxValueChange={handleMaxValueChange}
                 onStartValueChange={handleStartValueChange}
-                // error={error}
-                // setError={setError}
             />
         </div>
     );

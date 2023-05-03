@@ -3,8 +3,8 @@ import {Button} from "../Button/Button";
 import s from "./Counter.module.css"
 
 type CounterProps = {
-    maxValue: number;
-    startValue: number;
+    maxValue: number
+    startValue: number
     // disabled?: boolean
     // error: string
 }

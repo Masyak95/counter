@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "../Button/Button";
 import s from "./Settings.module.css"
+import {Input} from "../Input/Input";
 
-type SettingsProps = {
-    maxValue: number;
-    startValue: number;
-    onMaxValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onStartValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    // error: string
+export type SettingsProps = {
+    maxValue: number
+    startValue: number
+    onMaxValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onStartValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 };
 
 const Settings = (props: SettingsProps) => {
@@ -26,26 +26,20 @@ const Settings = (props: SettingsProps) => {
 
     return (
         <div className={s.window}>
-            <div>Max Value:</div>
-            <input
-                type="number"
+            <Input
+                title={"Max Value:"}
                 value={props.maxValue}
                 onChange={props.onMaxValueChange}
-                // error={props.maxValue <= props.startValue ||props.maxValue > 10 || isNaN(props.maxValue)}
             />
-
-            <div>Start Value:</div>
-            <input
-                type="number"
+            <Input
+                title={"Start Value:"}
                 value={props.startValue}
                 onChange={props.onStartValueChange}
-                // error={props.maxValue <= props.startValue ||props.maxValue > 0 || isNaN(props.maxValue)}
             />
             <div className={s.window}>
                 <Button
                     title={"Set"}
                     onClick={handleSetClick}
-                    // disabled={props.error !== 'work' && props.error !== 'press \'set\''}
                 />
             </div>
         </div>
