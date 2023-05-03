@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button } from "../Button/Button";
 import s from "./Settings.module.css"
 import {Input} from "../Input/Input";
@@ -11,30 +11,61 @@ export type SettingsProps = {
 };
 
 const Settings = (props: SettingsProps) => {
+    const [error, setError] = useState<string>("");
+
+    const checkValue = (newValue: number, oldMaxValue: number, oldMinValue: number) => {
+        if (newValue <= oldMinValue || newValue > 10 || newValue < 0) {
+            return "incorrect value";
+        } else if (isNaN(newValue)) {
+            return "enter value";
+        } else if (oldMaxValue !== props.maxValue || oldMinValue !== props.startValue) {
+            return "press 'set'";
+        } else {
+            return "";
+        }
+    };//функция, которая проверяет, соответствует ли переданное значение заданным условиям
+
     const handleSetClick = () => {
-        const maxEvent: React.ChangeEvent<HTMLInputElement> = {
-            target: { value: props.maxValue.toString() }
-        } as unknown as React.ChangeEvent<HTMLInputElement>
+        props.onMaxValueChange({
+            target: { value: props.maxValue.toString() },
+        } as React.ChangeEvent<HTMLInputElement>);
 
-        const startEvent: React.ChangeEvent<HTMLInputElement> = {
-            target: { value: props.startValue.toString() }
-        } as unknown as React.ChangeEvent<HTMLInputElement>
-
-        props.onMaxValueChange(maxEvent)
-        props.onStartValueChange(startEvent)
+        props.onStartValueChange({
+            target: { value: props.startValue.toString() },
+        } as React.ChangeEvent<HTMLInputElement>);
     };
+
+    const onMaxValueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = Number.parseInt(event.currentTarget.value);
+        const error = checkValue(newValue, props.startValue, props.startValue === 0 ? 10 : props.startValue - 1);
+        props.onMaxValueChange(event);
+        if (error) setError(error);
+    };//функция, которая вызывается при изменении значения максимального значения в поле ввода
+
+    const onStartValueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = Number.parseInt(event.currentTarget.value);
+        const error = checkValue(newValue, props.maxValue, props.maxValue - 1);
+        props.onStartValueChange(event);
+        if (error) setError(error);
+    };//функция, которая вызывается при изменении значения начального значения в поле ввода
 
     return (
         <div className={s.window}>
             <Input
                 title={"Max Value:"}
                 value={props.maxValue}
-                onChange={props.onMaxValueChange}
+                onChange={onMaxValueChangeHandler}
+                error={error}
+                checkValue={checkValue}
+                setError={setError}
             />
             <Input
                 title={"Start Value:"}
                 value={props.startValue}
-                onChange={props.onStartValueChange}
+                onChange={onStartValueChangeHandler}
+                error={error}
+                checkValue={checkValue}
+                setError={setError}
             />
             <div className={s.window}>
                 <Button
