@@ -16,7 +16,7 @@ export type SettingsProps = {
 const Settings = (props: SettingsProps) => {
 
     return (
-        <div className={s.window}>
+        <div className={s.container}>
             {props.errorMessage && <p className={s.error}>{props.errorMessage}</p>}
             <Input
                 title={"Max Value:"}

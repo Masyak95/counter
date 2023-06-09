@@ -28,7 +28,7 @@ const Counter = ({ maxValue, startValue }: CounterProps) => {
     };
 
     return (
-        <div className={s.window}>
+        <div className={s.container}>
             <p>{count}</p>
             <Button
                 title={"Increment"}

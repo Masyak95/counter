@@ -8,10 +8,9 @@ const App = () => {
     const [startValue, setStartValue] = useState<number>(0);
     const [disableSetButton, setDisableSetButton] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
-  //test
     const handleMaxValueChange = (
         event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
+    ) => {
         const value = Number(event.target.value);
         if (value >= startValue && value <= 100) {
             setMaxValue(value);
@@ -26,7 +25,7 @@ const App = () => {
     };
     const handleStartValueChange = (
         event: React.ChangeEvent<HTMLInputElement>
-    ): void => {
+    ) => {
         const value = Number(event.target.value);
         if (value >= 0 && value <= maxValue - 1) {
             setStartValue(value);
@@ -40,24 +39,31 @@ const App = () => {
         }
     };
 
-    const handleSetClick = (): void => {
+    const handleSetClick = () => {
         setDisableSetButton(true);
     };
 
     return (
-        <div className={s.window}>
-            <Counter maxValue={maxValue}
-                     startValue={startValue}
-            />
-            <Settings
-                maxValue={maxValue}
-                startValue={startValue}
-                onMaxValueChange={handleMaxValueChange}
-                onStartValueChange={handleStartValueChange}
-                disableSetButton={disableSetButton}
-                errorMessage={errorMessage}
-                onSetClick={handleSetClick}
-            />
+        <div className={s.container}>
+            <div className={s.wrapper}>
+                <div className={s.box}>
+                    <Counter maxValue={maxValue}
+                             startValue={startValue}
+                    />
+                </div>
+                <div className={s.box}>
+                    <Settings
+                        maxValue={maxValue}
+                        startValue={startValue}
+                        onMaxValueChange={handleMaxValueChange}
+                        onStartValueChange={handleStartValueChange}
+                        disableSetButton={disableSetButton}
+                        errorMessage={errorMessage}
+                        onSetClick={handleSetClick}
+                    />
+                </div>
+            </div>
+
         </div>
     );
 };
