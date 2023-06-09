@@ -1,0 +1,21 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+
+    border-radius: 4px;
+    /*text-decoration: none;*/
+    color: #fff;
+}
+
+/*.button {*/
+/*    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;*/
+/*    position: relative;*/
+/*    letter-spacing: 1px;*/
+/*}*/
+
+.button:hover{
+    background-color: #7c7a7a;
+}
