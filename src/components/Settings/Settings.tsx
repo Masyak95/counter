@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../Button/Button";
+import {Button} from "../Button/Button";
 import s from "./Settings.module.css";
-import { Input } from "../Input/Input";
+import {Input} from "../Input/Input";
 
 export type SettingsProps = {
     maxValue: number;
@@ -28,12 +28,11 @@ const Settings = (props: SettingsProps) => {
                 value={props.startValue}
                 onChange={props.onStartValueChange}
             />
-        
-                <Button
-                    title={"Set"}
-                    onClick={props.onSetClick}
-                    disabled={props.disableSetButton}
-                />
+            <Button
+                title={"Set"}
+                onClick={props.onSetClick}
+                disabled={props.disableSetButton}
+            />
         </div>
     );
 };

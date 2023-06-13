@@ -1,4 +1,5 @@
 import React from "react";
+import s from "./Input.module.css"
 
 type InputProps = {
     title: string;
@@ -9,7 +10,7 @@ type InputProps = {
 export const Input = (props: InputProps) => {
 
     return (
-        <div>
+        <div className={s.container}>
             <div>{props.title}</div>
             <input
                 type={"number"}

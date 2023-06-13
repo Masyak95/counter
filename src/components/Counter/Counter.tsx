@@ -5,7 +5,6 @@ import s from "./Counter.module.css"
 type CounterProps = {
     maxValue: number;
     startValue: number;
-
 }
 
 const Counter = ({ maxValue, startValue }: CounterProps) => {
