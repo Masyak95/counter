@@ -30,6 +30,7 @@ const Counter = ({ maxValue, startValue }: CounterProps) => {
     return (
         <div className={s.container}>
             <p>{count}</p>
+            <div className={s.buttons}>
             <Button
                 title={"Increment"}
                 onClick={handleIncrement}
@@ -42,6 +43,7 @@ const Counter = ({ maxValue, startValue }: CounterProps) => {
                 title={"Reset"}
                 onClick={handleReset}
             />
+            </div> 
         </div>
     );
 };

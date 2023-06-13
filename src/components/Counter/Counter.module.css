@@ -1,0 +1,12 @@
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:50px;
+}
+
+.buttons{
+    display: flex;
+    min-height:85px;
+    align-items: center;
+}

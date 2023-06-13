@@ -28,13 +28,12 @@ const Settings = (props: SettingsProps) => {
                 value={props.startValue}
                 onChange={props.onStartValueChange}
             />
-            <div className={s.window}>
+        
                 <Button
                     title={"Set"}
                     onClick={props.onSetClick}
                     disabled={props.disableSetButton}
                 />
-            </div>
         </div>
     );
 };
