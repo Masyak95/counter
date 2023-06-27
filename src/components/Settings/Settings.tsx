@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "../Button/Button";
 import s from "./Settings.module.css";
 import {Input} from "../Input/Input";
@@ -8,12 +8,18 @@ export type SettingsProps = {
     startValue: number;
     onMaxValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onStartValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    disableSetButton: boolean;
     errorMessage: string;
-    onSetClick: () => void;
+
 };
 
 const Settings = (props: SettingsProps) => {
+
+    const [isSetClicked, setIsSetClicked] = useState(false);
+
+    const handleSetClick = () => {
+        setIsSetClicked(true);
+    };
+
 
     return (
         <div className={s.container}>
@@ -30,8 +36,7 @@ const Settings = (props: SettingsProps) => {
             />
             <Button
                 title={"Set"}
-                onClick={props.onSetClick}
-                disabled={props.disableSetButton}
+                onClick={handleSetClick}
             />
         </div>
     );

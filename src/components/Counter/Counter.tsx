@@ -1,14 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button} from "../Button/Button";
 import s from "./Counter.module.css"
 
 type CounterProps = {
     maxValue: number;
     startValue: number;
+    setMaxValue: (value: number) => void;
 }
 
-const Counter = ({ maxValue, startValue }: CounterProps) => {
-    const [count, setCount] = useState<number>(startValue);
+const Counter = ({ maxValue, startValue, setMaxValue }: CounterProps) => {
+    const [count, setCount] = useState<number>(0);
+
+    useEffect(() => {
+        setCount(startValue);
+    }, [startValue]);
+
+    useEffect(() => {
+        setMaxValue(maxValue);
+    }, [maxValue]);
+
 
     const handleIncrement = (): void => {
         if (count < maxValue) {
@@ -23,7 +33,7 @@ const Counter = ({ maxValue, startValue }: CounterProps) => {
     };
 
     const handleReset = (): void => {
-        setCount(startValue);
+        setCount(0);
     };
 
     return (
