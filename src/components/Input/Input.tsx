@@ -3,8 +3,11 @@ import s from "./Input.module.css"
 
 type InputProps = {
     title: string;
-    value: number;
+    value?: number;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    startValue: number
+    maxValue: number
+
 };
 
 export const Input = (props: InputProps) => {
@@ -16,6 +19,7 @@ export const Input = (props: InputProps) => {
                 type={"number"}
                 value={props.value}
                 onChange={props.onChange}
+                className={props.startValue >= props.maxValue || props.maxValue < 0 ? s.error : ""}
             />
         </div>
     )

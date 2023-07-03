@@ -1,23 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Button} from "../Button/Button";
 import s from "./Counter.module.css"
+import CounterDisplay from "./Display/counterDisplay";
 
 type CounterProps = {
     maxValue: number;
     startValue: number;
     setMaxValue: (value: number) => void;
+    setCount: (count: number)=>void
+    count: number
+    errorMessage: boolean
 }
 
-const Counter = ({ maxValue, startValue, setMaxValue }: CounterProps) => {
-    const [count, setCount] = useState<number>(0);
-
-    useEffect(() => {
-        setCount(startValue);
-    }, [startValue]);
-
-    useEffect(() => {
-        setMaxValue(maxValue);
-    }, [maxValue]);
+const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: CounterProps) => {
 
 
     const handleIncrement = (): void => {
@@ -38,15 +33,20 @@ const Counter = ({ maxValue, startValue, setMaxValue }: CounterProps) => {
 
     return (
         <div className={s.container}>
-            <p>{count}</p>
+            <CounterDisplay
+                count={count}
+                errorMessage={errorMessage}
+            />
             <div className={s.buttons}>
             <Button
                 title={"Increment"}
                 onClick={handleIncrement}
+                disabled={!count}
             />
             <Button
                 title={"Decrement"}
                 onClick={handleDecrement}
+                disabled={!count}
             />
             <Button
                 title={"Reset"}

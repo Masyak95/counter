@@ -2,6 +2,8 @@
     margin: 5px;
 }
 
-input {
-
+.error {
+    border: 2px solid red;
+    background-color: pink;
+    outline: none;
 }

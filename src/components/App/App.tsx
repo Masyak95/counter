@@ -6,33 +6,27 @@ import s from "./App.module.css"
 const App = () => {
     const [maxValue, setMaxValue] = useState<number>(10);
     const [startValue, setStartValue] = useState<number>(0);
-    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState<boolean>(true);
+    const [count, setCount] = useState<number>(0);
     const handleMaxValueChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const value = Number(event.target.value);
-        if (value >= startValue && value <= 100) {
-            setMaxValue(value);
-            setErrorMessage("");
-        } else {
-            setErrorMessage(
-                "Max value should be greater than start value and less than or equal to 100"
-            );
-        }
+        setMaxValue(value);
     };
+
     const handleStartValueChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const value = Number(event.target.value);
-        if (value >= 0 && value <= maxValue - 1) {
-            setStartValue(value);
-            setErrorMessage("");
-        } else {
-            setErrorMessage(
-                "Start value should be greater than or equal to 0 and less than max value"
-            );
-        }
+        setStartValue(value);
     };
+
+    const handleSetClick = () => {
+        if (!errorMessage) {
+            setCount(startValue)
+        }
+    }
 
 
     return (
@@ -42,6 +36,9 @@ const App = () => {
                     <Counter maxValue={maxValue}
                              startValue={startValue}
                              setMaxValue={setMaxValue}
+                             count={count}
+                             setCount={setCount}
+                             errorMessage={errorMessage}
                     />
 
                 </div>
@@ -51,7 +48,7 @@ const App = () => {
                         startValue={startValue}
                         onMaxValueChange={handleMaxValueChange}
                         onStartValueChange={handleStartValueChange}
-                        errorMessage={errorMessage}
+                        handleSetClick={handleSetClick}
                     />
                 </div>
             </div>
