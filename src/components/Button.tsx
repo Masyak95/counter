@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Button.module.css"
+
 
 type ButtonPropsType = {
     title: string;
@@ -8,7 +8,9 @@ type ButtonPropsType = {
 }
 export const Button = (props: ButtonPropsType) => {
     return (
-        <button className={s.button} onClick={props.onClick} >
+        <button className={"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full"}
+                onClick={props.onClick}
+        >
             {props.title}
         </button>
     )

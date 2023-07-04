@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import Counter from "../Counter/Counter";
-import Settings from "../Settings/Settings";
-import s from "./App.module.css"
+import Counter from "./Counter";
+import Settings from "./Settings";
+
 
 const App = () => {
     const [maxValue, setMaxValue] = useState<number>(10);
@@ -30,9 +30,9 @@ const App = () => {
 
 
     return (
-        <div className={s.container}>
-            <div className={s.wrapper}>
-                <div className={s.box}>
+        <div >
+            <div >
+                <div >
                     <Counter maxValue={maxValue}
                              startValue={startValue}
                              setMaxValue={setMaxValue}
@@ -42,7 +42,7 @@ const App = () => {
                     />
 
                 </div>
-                <div className={s.box}>
+                <div >
                     <Settings
                         maxValue={maxValue}
                         startValue={startValue}

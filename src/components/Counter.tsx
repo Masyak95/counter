@@ -1,7 +1,6 @@
 import React from "react";
-import {Button} from "../Button/Button";
-import s from "./Counter.module.css"
-import CounterDisplay from "./Display/counterDisplay";
+import {Button} from "./Button";
+import CounterDisplay from "./counterDisplay";
 
 type CounterProps = {
     maxValue: number;
@@ -32,12 +31,12 @@ const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: Counter
     };
 
     return (
-        <div className={s.container}>
+        <div>
             <CounterDisplay
                 count={count}
                 errorMessage={errorMessage}
             />
-            <div className={s.buttons}>
+            <div >
             <Button
                 title={"Increment"}
                 onClick={handleIncrement}
