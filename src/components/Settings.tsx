@@ -15,8 +15,7 @@ const Settings = (props: SettingsProps) => {
 
 
     return (
-
-            <div className={"flex flex-col items-center"}>
+            <div className={"flex flex-col justify-between items-center p-10 w-96 border-indigo-500 border rounded-2xl gap-2.5"}>
                 <Input
                     title={"Max Value:"}
                     value={props.maxValue}
@@ -25,6 +24,7 @@ const Settings = (props: SettingsProps) => {
                     maxValue={props.maxValue}
                 />
                 <Input
+
                     title={"Start Value:"}
                     value={props.startValue}
                     onChange={props.onStartValueChange}
@@ -36,7 +36,6 @@ const Settings = (props: SettingsProps) => {
                     onClick={props.handleSetClick}
                 />
             </div>
-
     );
 };
 

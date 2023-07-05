@@ -8,7 +8,7 @@ type ButtonPropsType = {
 }
 export const Button = (props: ButtonPropsType) => {
     return (
-        <button className={"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full"}
+        <button className={"bg-transparent hover:bg-indigo-500 text-indigo-900 font-thin hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded-2xl"}
                 onClick={props.onClick}
         >
             {props.title}

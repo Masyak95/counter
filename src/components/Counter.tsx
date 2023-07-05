@@ -31,12 +31,12 @@ const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: Counter
     };
 
     return (
-        <div>
+        <div className={'flex flex-col justify-between items-center p-10 h-full'}>
             <CounterDisplay
                 count={count}
                 errorMessage={errorMessage}
             />
-            <div >
+            <div className={"flex gap-2"}>
             <Button
                 title={"Increment"}
                 onClick={handleIncrement}
