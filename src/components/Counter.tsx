@@ -35,6 +35,8 @@ const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: Counter
             <CounterDisplay
                 count={count}
                 errorMessage={errorMessage}
+                maxValue={maxValue}
+                startValue={startValue}
             />
             <div className={"flex gap-2"}>
             <Button

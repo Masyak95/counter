@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Counter from "./Counter";
 import Settings from "./Settings";
+import AnimatedCursor from "react-animated-cursor";
 
 
 const App = () => {
@@ -28,10 +29,15 @@ const App = () => {
         }
     }
 
+    const box = "flex justify-center m-px  rounded-2xl  bg-white bg-opacity-20 "
+
 
     return (
-        <div className={"fixed left-0 top-0 flex h-full w-full items-center justify-center py-10  bg-gradient-to-r from-indigo-500 from-10%  "}>
-            <div className={"flex justify-center m-px  rounded-2xl  bg-white bg-opacity-20 backdrop-blur-ls"}>
+        <div className={"fixed left-0 top-0 flex h-full w-full items-center justify-center py-10  bg-gradient-to-r from-indigo-500 from-10% "}>
+           <AnimatedCursor
+               color='184, 91, 255'
+           />
+            <div className={`${box} backdrop-blur-ls`}>
                 <div>
                     <Counter maxValue={maxValue}
                              startValue={startValue}
@@ -41,7 +47,7 @@ const App = () => {
                              errorMessage={errorMessage}
                     />
                 </div>
-                <div className={'flex justify-center m-px  rounded-2xl  bg-white bg-opacity-20 '}>
+                <div className={`${box}`}>
                     <Settings
                         maxValue={maxValue}
                         startValue={startValue}

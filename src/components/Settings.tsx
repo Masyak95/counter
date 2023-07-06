@@ -15,7 +15,7 @@ const Settings = (props: SettingsProps) => {
 
 
     return (
-            <div className={"flex flex-col justify-between items-center p-10 w-96 border-indigo-500 border rounded-2xl gap-2.5"}>
+            <div className={"flex flex-col justify-between items-center p-10 w-96 border-indigo-300 border rounded-2xl gap-2.5"}>
                 <Input
                     title={"Max Value:"}
                     value={props.maxValue}
