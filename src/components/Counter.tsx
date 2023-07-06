@@ -5,14 +5,14 @@ import CounterDisplay from "./counterDisplay";
 type CounterProps = {
     maxValue: number;
     startValue: number;
+    helperText: string | null
     setMaxValue: (value: number) => void;
     setCount: (count: number)=>void
     count: number
     errorMessage: boolean
 }
 
-const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: CounterProps) => {
-
+const Counter = ({ maxValue, startValue, setCount, count, errorMessage, helperText}: CounterProps) => {
 
     const handleIncrement = (): void => {
         if (count < maxValue) {
@@ -34,6 +34,7 @@ const Counter = ({ maxValue, startValue, setCount, count, errorMessage}: Counter
         <div className={'flex flex-col justify-between items-center p-10 h-full'}>
             <CounterDisplay
                 count={count}
+                helperText={helperText}
                 errorMessage={errorMessage}
                 maxValue={maxValue}
                 startValue={startValue}

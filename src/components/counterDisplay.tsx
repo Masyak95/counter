@@ -3,27 +3,28 @@ import React from 'react';
 type Props = {
     count: number;
     errorMessage?: boolean;
+    helperText: string | null
     maxValue: number;
     startValue: number;
 };
 
-const CounterDisplay = ({ count, maxValue, startValue }: Props) => {
-    function checkValue() {
-        if (count <= startValue || count > maxValue || startValue < 0) {
-            return 'incorrect value';
-        } else if (isNaN(startValue) || isNaN(maxValue)) {
-            return 'enter value';
-        } else {
-            return "press 'set'";
+const CounterDisplay = ({ count, helperText, errorMessage }: Props) => {
+
+    function checkValue(){
+        if(helperText){
+            return helperText
         }
+        return count
     }
 
+
     const box = 'flex justify-center items-center m-px  rounded-2xl  bg-white bg-opacity-20 w-full h-1/2  ';
+    const disabled = 'opacity-25 pointer-events-none'
     return (
-        <div className={`${box}`}>
+        <div className={`${box} ${errorMessage && disabled}`} aria-disabled={errorMessage}>
             <p>{checkValue()}</p>
         </div>
     );
 };
 
-export default CounterDisplay;
+export default CounterDisplay

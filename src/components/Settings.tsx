@@ -8,11 +8,11 @@ export type SettingsProps = {
     onMaxValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onStartValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleSetClick: () => void
+    errorMessage: boolean
 
 };
 
 const Settings = (props: SettingsProps) => {
-
 
     return (
             <div className={"flex flex-col justify-between items-center p-10 w-96 border-indigo-300 border rounded-2xl gap-2.5"}>
@@ -32,6 +32,7 @@ const Settings = (props: SettingsProps) => {
                     maxValue={props.maxValue}
                 />
                 <Button
+                    disabled={props.errorMessage}
                     title={"Set"}
                     onClick={props.handleSetClick}
                 />

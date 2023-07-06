@@ -1,6 +1,5 @@
 import React from "react";
 
-
 type ButtonPropsType = {
     title: string;
     onClick?: () => void;
