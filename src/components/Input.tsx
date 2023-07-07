@@ -14,7 +14,6 @@ export const Input = (props: InputProps) => {
 
     const errorClasses = props.startValue >= props.maxValue || props.maxValue < 0 ? 'border-red-500 text-red-500' : '';
 
-
     return (
         <div className={"flex w-full justify-between items-center"}>
             <label className={"block text-gray-500 "}>
@@ -28,7 +27,6 @@ export const Input = (props: InputProps) => {
                     value={props.value}
                     onChange={props.onChange}
                 />
-
             </div>
         </div>
     )
