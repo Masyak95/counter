@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import Counter from "./components/Counter";
 import Settings from "./components/Settings";
 import AnimatedCursor from "react-animated-cursor";
-import {setMaxAC, setStartAC} from "./redux/reducers/counter-reducer";
 import {useDispatch} from "react-redux";
 
 
@@ -31,7 +30,7 @@ const dispatch = useDispatch()
     ) => {
         const value = Number(event.target.value);
        // setMaxValue(value);
-        dispatch(setMaxAC(value))
+       //  dispatch(setMaxAC(value))
         checkError(value, startValue)
     };
 
@@ -40,7 +39,7 @@ const dispatch = useDispatch()
     ) => {
         const value = Number(event.target.value)
         //setStartValue(value)
-        dispatch(setStartAC(value))
+        // dispatch(setStartAC(value))
         checkError(maxValue, value)
     };
 

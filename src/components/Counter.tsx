@@ -1,7 +1,6 @@
-import React from "react";
+import React, {FC} from "react";
 import {Button} from "./Button";
 import CounterDisplay from "./counterDisplay";
-import {useSelector} from "react-redux";
 
 export type CounterProps = {
     maxValue: number;
@@ -16,9 +15,9 @@ export type CounterProps = {
 
 }
 
-const Counter = (
-    {maxValue, startValue, count, errorMessage, helperText, handleIncrement, handleDecrement, handleReset}
-        : CounterProps) => {
+const Counter: FC <CounterProps> = (props) => {
+
+    const {maxValue, startValue, count, errorMessage, helperText, handleIncrement, handleDecrement, handleReset} = props
 
     return (
         <div className={'flex flex-col justify-between items-center p-10 h-full'}>
