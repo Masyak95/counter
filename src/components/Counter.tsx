@@ -1,13 +1,15 @@
 import React, {FC} from "react";
 import {Button} from "./Button";
 import CounterDisplay from "./counterDisplay";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../redux/store";
 
 export type CounterProps = {
-    maxValue: number;
-    startValue: number;
+    // maxValue: number;
+    // startValue: number;
     helperText: string | null
-    setMaxValue: (value: number) => void
-    count: number
+    // setMaxValue: (value: number) => void
+    // count: number
     errorMessage: boolean
     handleIncrement: () => void
     handleDecrement: () => void
@@ -16,8 +18,12 @@ export type CounterProps = {
 }
 
 const Counter: FC <CounterProps> = (props) => {
+    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.max)
+    const startValue = useSelector<AppRootStateType, number>(state => state.counter.min)
+    const count = useSelector<AppRootStateType, number>(state => state.counter.count)
+    const dispatch = useDispatch()
 
-    const {maxValue, startValue, count, errorMessage, helperText, handleIncrement, handleDecrement, handleReset} = props
+    const { errorMessage, helperText, handleIncrement, handleDecrement, handleReset} = props
 
     return (
         <div className={'flex flex-col justify-between items-center p-10 h-full'}>
@@ -31,19 +37,19 @@ const Counter: FC <CounterProps> = (props) => {
             />
             <div className={"flex gap-2"}>
                 <Button
-                    title={"Increment"}
+
                     onClick={handleIncrement}
                     disabled={!count}
-                />
+                >Increment</Button>
                 <Button
-                    title={"Decrement"}
+
                     onClick={handleDecrement}
                     disabled={!count}
-                />
+                >Decrement</Button>
                 <Button
-                    title={"Reset"}
+
                     onClick={handleReset}
-                />
+                >Reset</Button>
             </div>
         </div>
     );

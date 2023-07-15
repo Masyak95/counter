@@ -1,10 +1,6 @@
 import React, {ButtonHTMLAttributes, FC} from "react";
 
-interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement>{
-    title: string;
-    onClick?: () => void;
-    disabled?: boolean
-}
+interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement>{}
 export const Button: FC<ButtonPropsType> = (props ) => {
     const {children, onClick, ...oderProps } = props
 

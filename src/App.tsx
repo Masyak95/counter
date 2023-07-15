@@ -2,16 +2,21 @@ import React, {useState} from "react";
 import Counter from "./components/Counter";
 import Settings from "./components/Settings";
 import AnimatedCursor from "react-animated-cursor";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./redux/store";
+import {setCountAC, setStartAC} from "./redux/reducers/counter-reducer";
 
 
 const App = () => {
-    const [maxValue, setMaxValue] = useState<number>(10);
-    const [startValue, setStartValue] = useState<number>(0);
+    // const [maxValue, setMaxValue] = useState<number>(10);
+    // const [startValue, setStartValue] = useState<number>(0);
     const [errorMessage, setErrorMessage] = useState<boolean>(false);
     const [helperText, setHelperText] = useState<string | null>(null)
-    const [count, setCount] = useState<number>(0);
-
+    // const [count, setCount] = useState<number>(0);
+   const maxValue = useSelector<AppRootStateType, number>(state => state.counter.max)
+   const startValue = useSelector<AppRootStateType, number>(state => state.counter.min)
+   const count = useSelector<AppRootStateType, number>(state => state.counter.count)
+    const dispatch = useDispatch()
     const checkError = (maxValue: number, startValue: number) => { //валидация
         if (maxValue <= startValue || maxValue > 10 || startValue < 0) {
             setHelperText('incorrect value')
@@ -24,46 +29,38 @@ const App = () => {
             setHelperText('enter value and press set')
         }
     }
-const dispatch = useDispatch()
-    const handleMaxValueChange = ( // меняет максимальное значение
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        const value = Number(event.target.value);
-       // setMaxValue(value);
-       //  dispatch(setMaxAC(value))
-        checkError(value, startValue)
-    };
+
 
     const handleStartValueChange = ( //меняет стартовое значение
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const value = Number(event.target.value)
         //setStartValue(value)
-        // dispatch(setStartAC(value))
+        dispatch(setStartAC(value))
         checkError(maxValue, value)
     };
 
     const handleSetClick = () => { //меняет состояние при нажатии кнопки сет
         if (!errorMessage) {
-            setCount(startValue)
+            dispatch(setCountAC(startValue))
             setHelperText(null)
         }
     }
 
     const handleIncrement = () => {
         if (count < maxValue) {
-            setCount(count + 1);
+            dispatch(setCountAC(count + 1))
         }
     };
 
     const handleDecrement = () => {
         if (count > startValue) {
-            setCount(count - 1);
+            dispatch(setCountAC(count - 1))
         }
     };
 
     const handleReset = () => {
-        setCount(0);
+        dispatch(setCountAC(0))
     };
 
 
@@ -81,10 +78,11 @@ const dispatch = useDispatch()
             />
             <div className={`${box} backdrop-blur-ls`}>
                 <div>
-                    <Counter maxValue={maxValue}
-                             startValue={startValue}
-                             setMaxValue={setMaxValue}
-                             count={count}
+                    <Counter
+                        // maxValue={maxValue}
+                        //      startValue={startValue}
+                             // setMaxValue={setMaxValue}
+                             // count={count}
                              helperText={helperText}
                              errorMessage={errorMessage}
                              handleIncrement={handleIncrement}
@@ -96,9 +94,10 @@ const dispatch = useDispatch()
                 <div className={`${box}`}>
                     <Settings
                         errorMessage={errorMessage}
-                        maxValue={maxValue}
-                        startValue={startValue}
-                        onMaxValueChange={handleMaxValueChange}
+                        // maxValue={maxValue}
+                        // startValue={startValue}
+                        // onMaxValueChange={handleMaxValueChange}
+                        checkError={checkError}
                         onStartValueChange={handleStartValueChange}
                         handleSetClick={handleSetClick}
                     />
